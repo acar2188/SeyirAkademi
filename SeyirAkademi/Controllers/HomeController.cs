@@ -23,6 +23,17 @@ namespace SeyirAkademi.Controllers
             return View();
         }
 
+        public IActionResult ArgeBilgiMerkezi()
+        {
+            return View();
+        }
+
+        public IActionResult SirketIciBilgiMerkezi()
+        {
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
