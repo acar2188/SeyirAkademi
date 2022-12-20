@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ACAR Yedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj": {}
+    "D:\\ACARYedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj": {}
   },
   "projects": {
-    "D:\\ACAR Yedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj": {
+    "D:\\ACARYedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ACAR Yedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj",
+        "projectUniqueName": "D:\\ACARYedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj",
         "projectName": "SeyirAkademi",
-        "projectPath": "D:\\ACAR Yedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj",
+        "projectPath": "D:\\ACARYedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\SeyirAkademi.csproj",
         "packagesPath": "C:\\Users\\fatih.acar\\.nuget\\packages\\",
-        "outputPath": "D:\\ACAR Yedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\obj\\",
+        "outputPath": "D:\\ACARYedek\\WEBProjects\\ODEV1_WebProgramlama\\SeyirAkademi\\SeyirAkademi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fatih.acar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,22 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
