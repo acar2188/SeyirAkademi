@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Doc>
+
+@foreach (var doc in Model)
+{
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                <img src="~/img/1.png" alt="" class"card-img">
+            </div>
+            <div class="col-md-9">
+                <h5 class="card-title">@doc.Name</h5>
+                <p class="card-text">
+                    @doc.ShortDescription
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">@doc.Id</small>
+                </p>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-2">
+            <img src="~/img/1.png" alt="" class"card-img">
+        </div>
+        <div class="col-md-9">
+            <h5 class="card-title">ST20</h5>
+            <p class="card-text">
+                Cihazın özellikleri bunlardır ve geniştir.
+            </p>
+            <p class="card-text">
+                <small class="text-muted">Değişme Tarihi</small>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-2">
+            <img src="~/img/1.png" alt="" class"card-img">
+        </div>
+        <div class="col-md-9">
+            <h5 class="card-title">NT20</h5>
+            <p class="card-text">
+                Cihazın özellikleri bunlardır ve geniştir.
+            </p>
+            <p class="card-text">
+                <small class="text-muted">Değişme Tarihi</small>
+            </p>
+        </div>
+    </div>
+</div>

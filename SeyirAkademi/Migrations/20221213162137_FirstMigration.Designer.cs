@@ -77,7 +77,7 @@ namespace SeyirAkademi.Migrations
 
             modelBuilder.Entity("SeyirAkademi.Models.DocumentInfo", b =>
                 {
-                    b.Navigation("Files");
+                   // b.Navigation("Files");
                 });
 #pragma warning restore 612, 618
         }
