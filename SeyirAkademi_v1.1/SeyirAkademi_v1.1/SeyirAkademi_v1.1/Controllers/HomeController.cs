@@ -11,6 +11,8 @@ namespace SeyirAkademi_v1._1.Controllers
 {
     public class HomeController : Controller
     {
+        private DocContext dc = new DocContext();
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,7 +22,7 @@ namespace SeyirAkademi_v1._1.Controllers
 
         public IActionResult Index()
         {
-            return View(DocRepo.Docs);
+            return View();
         }
         public IActionResult DataCenterForEveryone()
         {
@@ -38,6 +40,23 @@ namespace SeyirAkademi_v1._1.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Doc d)
+        {
+            if (ModelState.IsValid)
+            {
+                dc.Add(d);
+                dc.SaveChanges();
+                TempData["msj"] = d.Name + " adlı yazar eklendi";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["hata"] = "Lütfen Gerekli alanları doldurunuz";
+                return RedirectToAction("Index");
+            }
         }
         public IActionResult List()
         {
