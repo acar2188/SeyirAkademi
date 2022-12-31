@@ -172,4 +172,4 @@ D:\ACARYedek\WEBProjects\ODEV1_WebProgramlama\SeyirAkademi\SeyirAkademi_v1.1\Sey
 D:\ACARYedek\WEBProjects\ODEV1_WebProgramlama\SeyirAkademi\SeyirAkademi_v1.1\SeyirAkademi_v1.1\SeyirAkademi_v1.1\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
 D:\ACARYedek\WEBProjects\ODEV1_WebProgramlama\SeyirAkademi\SeyirAkademi_v1.1\SeyirAkademi_v1.1\SeyirAkademi_v1.1\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 D:\ACARYedek\WEBProjects\ODEV1_WebProgramlama\SeyirAkademi\SeyirAkademi_v1.1\SeyirAkademi_v1.1\SeyirAkademi_v1.1\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
-D:\ACARYedek\WEBProjects\ODEV1_WebProgramlama\SeyirAkademi\SeyirAkademi_v1.1\SeyirAkademi_v1.1\SeyirAkademi_v1.1\obj\Debug\net5.0\SeyirAkademi_v1.1.csproj.AssemblyReference.cache
+D:\ACARYedek\WEBProjects\ODEV1_WebProgramlama\SeyirAkademi\SeyirAkademi_v1.1\SeyirAkademi_v1.1\SeyirAkademi_v1.1\obj\Debug\net5.0\Razor\Views\Home\CreateDoc.cshtml.g.cs

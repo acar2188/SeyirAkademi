@@ -13,8 +13,10 @@ namespace SeyirAkademi_v1._1.Models
         public String ShortDescription { get; set; }
         public String Description { get; set; }
         public String ImageURL { get; set; }
-        public String FileName { get; set; }
-        public String FileURL { get; set; }
+        //public String FileName { get; set; }
+        //public String FileURL { get; set; }
+
+        public ICollection<File> Files { get; set; }
 
     }
 }
