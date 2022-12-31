@@ -22,7 +22,8 @@ namespace SeyirAkademi_v1._1.Controllers
 
         public IActionResult Index()
         {
-            return View();
+
+            return View(DocRepo.Docs);
         }
         public IActionResult DataCenterForEveryone()
         {

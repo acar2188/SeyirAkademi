@@ -8,6 +8,7 @@ namespace SeyirAkademi_v1._1.Models
     public class Doc
     {
         public int Id { get; set; }
+        public int DocTypeId { get; set; }
         public String Name { get; set; }
         public String ShortDescription { get; set; }
         public String Description { get; set; }
