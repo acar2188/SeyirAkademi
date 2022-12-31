@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SeyirAkademi_v1._1.Models;
 using System;
@@ -30,6 +31,7 @@ namespace SeyirAkademi_v1._1.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult DataCenterForCompany()
         {
             return View();

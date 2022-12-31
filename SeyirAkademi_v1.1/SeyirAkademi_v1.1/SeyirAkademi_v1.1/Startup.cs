@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SeyirAkademi_v1._1.Data;
+using SeyirAkademi_v1._1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,31 @@ namespace SeyirAkademi_v1._1
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+                options.Lockout.MaxFailedAccessAttempts = 5;
+            });
+
+            services.AddIdentity<UserDetail, IdentityRole>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.ConfigureApplicationCookie(options =>
+            {
+                // options.LoginPath=""
+            });
+
+
+
+            //services.AddDefaultIdentity<UserDetail>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
