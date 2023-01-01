@@ -1,1 +1,14 @@
-﻿<h1>DataCenterForEveryone</h1>
+﻿@model IEnumerable<Doc>
+
+<h1>DataCenterForEveryone</h1>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <partial name="_menu" model="Model" />
+
+    </div>
+    <div class="col-md-9">
+        <partial name="_docs" model="Model" />
+    </div>
+</div>

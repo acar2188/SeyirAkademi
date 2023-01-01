@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace SeyirAkademi_v1._1.Controllers
 {
@@ -27,19 +28,39 @@ namespace SeyirAkademi_v1._1.Controllers
             var Docs = dContext.Docs;
             return View(Docs);
         }
-        public IActionResult DataCenterForEveryone()
+        public async Task<IActionResult> DataCenterForEveryone()
         {
-            return View();
+            var y = dContext.Docs.Where(x => x.DocTypeId == 0);
+            if (y is null)
+            {
+                TempData["hata"] = "Herhangi bir doküman bulunamadı";
+               return View("Hata");
+            }
+            return View(await y.ToListAsync());
         }
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult DataCenterForCompany()
+        [Authorize]
+        public async Task<IActionResult> DataCenterForCompany()
         {
-            return View();
+            var y = dContext.Docs.Where(x => x.DocTypeId == 1);
+            if (y is null)
+            {
+                TempData["hata"] = "Herhangi bir doküman bulunamadı";
+                return View("Hata");
+            }
+            return View(await y.ToListAsync());
         }
-        public IActionResult DataCenterForRD()
+
+        [Authorize(Roles = "RdUser,Admin")]
+        public async Task<IActionResult> DataCenterForRD()
         {
-            return View();
+            var y = dContext.Docs.Where(x => x.DocTypeId == 2);
+            if (y is null)
+            {
+                TempData["hata"] = "Herhangi bir doküman bulunamadı";
+                return View("Hata");
+            }
+            return View(await y.ToListAsync());
         }
         public IActionResult Create()
         {
@@ -108,7 +129,11 @@ namespace SeyirAkademi_v1._1.Controllers
             }
         }
 
+        public IActionResult DocDetail(int id)
+        {
 
+            return View(dContext.Docs.FirstOrDefault(x => x.Id == id));
+        }
         public IActionResult List()
         {
             return View();

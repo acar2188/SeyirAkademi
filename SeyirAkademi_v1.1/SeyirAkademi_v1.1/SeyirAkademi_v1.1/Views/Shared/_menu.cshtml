@@ -6,7 +6,7 @@
     }
     @if (User.Identity.IsAuthenticated)
     {
-        @if (User.IsInRole("RdUser"))
+        @if (User.IsInRole("RdUser") || User.IsInRole("Admin"))
         {
         <a href="/Home/DataCenterForRD" class="list-group-item list-group-item-action active">Arge Bilgi Merkezi</a>
         }
