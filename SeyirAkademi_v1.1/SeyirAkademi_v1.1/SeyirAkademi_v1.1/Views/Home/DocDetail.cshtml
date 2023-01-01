@@ -26,10 +26,20 @@
                 </div>
             </div>
         </div>
-        <div>
-            <a> @Model.Description</a>
+        <p>
+            <div class="row">
+                <a> @Model.Description</a>
+            </div>
+        </p>
+            <p>
+                @if (@Model.FileURL != null)
+                {
+                    <a href="@Model.FileURL">
+                        <img src="~/img/File.png" alt="Edit">
+                    </a>
+                }
+            </p>
+
+
         </div>
-
-
-    </div>
     </div>

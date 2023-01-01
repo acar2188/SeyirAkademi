@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace SeyirAkademi_v1._1.Controllers
 {
@@ -30,37 +32,54 @@ namespace SeyirAkademi_v1._1.Controllers
         }
         public async Task<IActionResult> DataCenterForEveryone()
         {
-            var y = dContext.Docs.Where(x => x.DocTypeId == 0);
+            List<Doc> y = new List<Doc>();
+            var hhtc = new HttpClient();
+            var response = await hhtc.GetAsync("https://localhost:44327/api/DocsApi/0");
+            string resString = await response.Content.ReadAsStringAsync();
+            y = JsonConvert.DeserializeObject<List<Doc>>(resString);
+
+            //var y = dContext.Docs.Where(x => x.DocTypeId == 0);
             if (y is null)
             {
                 TempData["hata"] = "Herhangi bir doküman bulunamadı";
                return View("Hata");
             }
-            return View(await y.ToListAsync());
+            return View(y);
         }
 
         [Authorize]
         public async Task<IActionResult> DataCenterForCompany()
         {
-            var y = dContext.Docs.Where(x => x.DocTypeId == 1);
+            List<Doc> y = new List<Doc>();
+            var hhtc = new HttpClient();
+            var response = await hhtc.GetAsync("https://localhost:44327/api/DocsApi/1");
+            string resString = await response.Content.ReadAsStringAsync();
+            y = JsonConvert.DeserializeObject<List<Doc>>(resString);
+
+            //var y = dContext.Docs.Where(x => x.DocTypeId == 1);
             if (y is null)
             {
                 TempData["hata"] = "Herhangi bir doküman bulunamadı";
                 return View("Hata");
             }
-            return View(await y.ToListAsync());
+            return View(y);
         }
 
         [Authorize(Roles = "RdUser,Admin")]
         public async Task<IActionResult> DataCenterForRD()
         {
-            var y = dContext.Docs.Where(x => x.DocTypeId == 2);
+            List<Doc> y = new List<Doc>();
+            var hhtc = new HttpClient();
+            var response = await hhtc.GetAsync("https://localhost:44327/api/DocsApi/2");
+            string resString = await response.Content.ReadAsStringAsync();
+            y = JsonConvert.DeserializeObject<List<Doc>>(resString);
+            //var y = dContext.Docs.Where(x => x.DocTypeId == 2);
             if (y is null)
             {
                 TempData["hata"] = "Herhangi bir doküman bulunamadı";
                 return View("Hata");
             }
-            return View(await y.ToListAsync());
+            return View(y);
         }
         public IActionResult Create()
         {
@@ -102,7 +121,7 @@ namespace SeyirAkademi_v1._1.Controllers
                     //var uzanti = "~/wwwroot/img/" + d.Id + dosyaUzanti;
                     var stream = new FileStream(dosyaYolu, FileMode.Create);
                     d.UploadImage.CopyTo(stream);
-                    d.ImageURL = dosyaYolu;
+                    d.ImageURL = Path.Combine("/img/", d.UploadImage.FileName);
                 }
                 if (d.UploadFile!= null)
                 {
@@ -112,7 +131,7 @@ namespace SeyirAkademi_v1._1.Controllers
                     //var uzanti = "~/wwwroot/img/" + d.Id + dosyaUzanti;
                     var stream = new FileStream(dosyaYolu, FileMode.Create);
                     d.UploadFile.CopyTo(stream);
-                    d.FileURL = dosyaYolu;
+                    d.FileURL = Path.Combine("/file/", d.UploadFile.FileName); ;
                 }
 
                 dContext.Add(d);
