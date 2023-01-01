@@ -9,10 +9,12 @@
 
         <div class="card mb-3">
             <div class="row no-gutters">
-                <div class="col-md-2">
-                    <img src="~/img/1.png" alt="" class"card-img">
+                <div class="col-md-3">
+                    <a>
+                        <img src="@Model.ImageURL" alt="Edit" width="180">
+                    </a>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-7">
                     <h5 class="card-title">
                         <a asp-action="DocDetail" asp-route-id="@Model.Id"> @Model.Name</a>
                     </h5>
@@ -21,7 +23,7 @@
 
                     </p>
                     <p class="card-text">
-                        <small class="text-muted">@Model.Id</small>
+                        @*<small class="text-muted">@Model.Id</small>*@
                     </p>
                 </div>
             </div>
