@@ -10,7 +10,7 @@ namespace SeyirAkademi_v1._1.Models
     {
 
         public DbSet<Doc> Docs { get; set; }
-        public DbSet<File> Files { get; set; }
+        //public DbSet<File> Files { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

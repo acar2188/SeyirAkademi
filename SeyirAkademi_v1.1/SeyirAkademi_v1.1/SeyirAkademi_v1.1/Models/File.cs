@@ -22,8 +22,8 @@ namespace SeyirAkademi_v1._1.Models
         [Display(Name = "Dosya URL")]
         public String FileURL { get; set; }
 
-        public int DocId { get; set; }
-        public Doc Doc { get; set; }
+        //public int DocId { get; set; }
+        //public Doc Doc { get; set; }
 
     }
 }

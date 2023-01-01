@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SeyirAkademi_v1._1.Models;
 
 namespace SeyirAkademi_v1._1.Migrations
 {
     [DbContext(typeof(DocContext))]
-    partial class DocContextModelSnapshot : ModelSnapshot
+    [Migration("20230101005529_model_guncellendi")]
+    partial class model_guncellendi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

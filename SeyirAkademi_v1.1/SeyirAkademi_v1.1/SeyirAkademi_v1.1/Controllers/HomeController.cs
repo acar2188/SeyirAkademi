@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SeyirAkademi_v1._1.Controllers
 {
@@ -72,9 +73,31 @@ namespace SeyirAkademi_v1._1.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(d.UploadImage != null)
+                {
+                    var dosyaUzanti = Path.GetExtension(d.UploadImage.FileName);
+                    var dosyaAdi = Path.GetFileName(d.UploadImage.FileName);
+                    var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", d.Id + dosyaUzanti);
+                    //var uzanti = "~/wwwroot/img/" + d.Id + dosyaUzanti;
+                    var stream = new FileStream(dosyaYolu, FileMode.Create);
+                    d.UploadImage.CopyTo(stream);
+                    d.ImageURL = dosyaYolu;
+                }
+                if (d.UploadFile!= null)
+                {
+                    var dosyaUzanti = Path.GetExtension(d.UploadFile.FileName);
+                    var dosyaAdi = Path.GetFileName(d.UploadFile.FileName);
+                    var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/file/", d.Id + dosyaUzanti);
+                    //var uzanti = "~/wwwroot/img/" + d.Id + dosyaUzanti;
+                    var stream = new FileStream(dosyaYolu, FileMode.Create);
+                    d.UploadFile.CopyTo(stream);
+                    d.ImageURL = dosyaYolu;
+                }
+
                 dContext.Add(d);
                 dContext.SaveChanges();
                 TempData["msj"] = d.Id + " adlı yazar eklendi";
+
                 return RedirectToAction("Index");
             }
             else
