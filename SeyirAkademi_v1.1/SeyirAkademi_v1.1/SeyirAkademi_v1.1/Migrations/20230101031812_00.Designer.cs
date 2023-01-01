@@ -9,8 +9,8 @@ using SeyirAkademi_v1._1.Models;
 namespace SeyirAkademi_v1._1.Migrations
 {
     [DbContext(typeof(DocContext))]
-    [Migration("20221231223327_fileEklendi")]
-    partial class fileEklendi
+    [Migration("20230101031812_00")]
+    partial class _00
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,66 +28,66 @@ namespace SeyirAkademi_v1._1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DocCategoryID")
+                        .HasColumnType("int");
 
                     b.Property<int>("DocTypeId")
                         .HasColumnType("int");
+
+                    b.Property<string>("FileURL")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("ShortDescription")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DocCategoryID");
 
                     b.ToTable("Docs");
                 });
 
-            modelBuilder.Entity("SeyirAkademi_v1._1.Models.File", b =>
+            modelBuilder.Entity("SeyirAkademi_v1._1.Models.DocCategory", b =>
                 {
-                    b.Property<int>("FileID")
+                    b.Property<int>("DocCategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DocId")
-                        .HasColumnType("int");
+                    b.Property<string>("DocCategoryName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                    b.HasKey("DocCategoryID");
 
-                    b.Property<string>("FileURL")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("FileID");
-
-                    b.HasIndex("DocId");
-
-                    b.ToTable("Files");
-                });
-
-            modelBuilder.Entity("SeyirAkademi_v1._1.Models.File", b =>
-                {
-                    b.HasOne("SeyirAkademi_v1._1.Models.Doc", "Doc")
-                        .WithMany("Files")
-                        .HasForeignKey("DocId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doc");
+                    b.ToTable("DocCategories");
                 });
 
             modelBuilder.Entity("SeyirAkademi_v1._1.Models.Doc", b =>
                 {
-                    b.Navigation("Files");
+                    b.HasOne("SeyirAkademi_v1._1.Models.DocCategory", "DocCategory")
+                        .WithMany("Docs")
+                        .HasForeignKey("DocCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DocCategory");
+                });
+
+            modelBuilder.Entity("SeyirAkademi_v1._1.Models.DocCategory", b =>
+                {
+                    b.Navigation("Docs");
                 });
 #pragma warning restore 612, 618
         }

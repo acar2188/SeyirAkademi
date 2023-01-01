@@ -10,11 +10,12 @@ namespace SeyirAkademi_v1._1.Models
     {
 
         public DbSet<Doc> Docs { get; set; }
+        //public DbSet<DocCategory> DocCategories { get; set; }
         //public DbSet<File> Files { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=DocDB_1;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=DocDB_3;Trusted_Connection=True;");
         }
 
     }

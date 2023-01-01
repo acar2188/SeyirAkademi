@@ -1,12 +1,14 @@
 ﻿<div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">Link Item 1</a>
-    <a href="#" class="list-group-item list-group-item-action active">Link Item 2</a>
-    <a href="#" class="list-group-item list-group-item-action active">Link Item 3</a>
-    <a href="#" class="list-group-item list-group-item-action active">Link Item 4</a>
-    
+    <a href="/Home/DataCenterForEveryone" class="list-group-item list-group-item-action active">Bilgi Merkezi</a>
     @if (User.Identity.IsAuthenticated)
     {
-        <a href="#" class="list-group-item list-group-item-action active">SIGNED'sın</a>
+        <a href="/Home/DataCenterForCompany" class="list-group-item list-group-item-action active">Şirket içi Bilgi Merkezi</a>
     }
-
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("RdUser"))
+        {
+        <a href="/Home/DataCenterForRD" class="list-group-item list-group-item-action active">Arge Bilgi Merkezi</a>
+        }
+    }
 </div>
