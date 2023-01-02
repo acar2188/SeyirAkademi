@@ -25,7 +25,7 @@ namespace SeyirAkademi_v1._1.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Doc>>> GetDocs()
         {
-            var y = await _context.Docs.Where(x => x.DocTypeId == 1).ToListAsync();
+            var y = await _context.Docs.ToListAsync();
             if (y is null)
             {
                 return NoContent();

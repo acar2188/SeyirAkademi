@@ -35,7 +35,7 @@ namespace SeyirAkademi_v1._1
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 6;
+                options.Password.RequiredLength = 3;
                 options.Lockout.MaxFailedAccessAttempts = 5;
             });
 

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\fatih.acar\Desktop\SeyirAkademiWeb2</_PublishTargetUrl>
+    <History>True|2023-01-02T11:33:19.7864439Z;True|2023-01-02T14:32:35.2552015+03:00;True|2023-01-02T14:31:57.4259461+03:00;True|2023-01-02T13:54:23.2145940+03:00;</History>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=%28localdb%29\mssqllocaldb%3bDatabase=aspnet-SeyirAkademi_v1._1-C6A82BBE-EF87-48A2-B4D7-3C079836AE13%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

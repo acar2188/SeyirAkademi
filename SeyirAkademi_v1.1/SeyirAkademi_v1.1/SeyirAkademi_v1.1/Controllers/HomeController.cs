@@ -37,8 +37,6 @@ namespace SeyirAkademi_v1._1.Controllers
             var response = await hhtc.GetAsync("https://localhost:44327/api/DocsApi/0");
             string resString = await response.Content.ReadAsStringAsync();
             y = JsonConvert.DeserializeObject<List<Doc>>(resString);
-
-            //var y = dContext.Docs.Where(x => x.DocTypeId == 0);
             if (y is null)
             {
                 TempData["hata"] = "Herhangi bir doküman bulunamadı";
@@ -56,7 +54,6 @@ namespace SeyirAkademi_v1._1.Controllers
             string resString = await response.Content.ReadAsStringAsync();
             y = JsonConvert.DeserializeObject<List<Doc>>(resString);
 
-            //var y = dContext.Docs.Where(x => x.DocTypeId == 1);
             if (y is null)
             {
                 TempData["hata"] = "Herhangi bir doküman bulunamadı";
@@ -73,7 +70,6 @@ namespace SeyirAkademi_v1._1.Controllers
             var response = await hhtc.GetAsync("https://localhost:44327/api/DocsApi/2");
             string resString = await response.Content.ReadAsStringAsync();
             y = JsonConvert.DeserializeObject<List<Doc>>(resString);
-            //var y = dContext.Docs.Where(x => x.DocTypeId == 2);
             if (y is null)
             {
                 TempData["hata"] = "Herhangi bir doküman bulunamadı";
@@ -118,7 +114,7 @@ namespace SeyirAkademi_v1._1.Controllers
                     var dosyaUzanti = Path.GetExtension(d.UploadImage.FileName);
                     var dosyaAdi = Path.GetFileName(d.UploadImage.FileName);
                     var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", d.UploadImage.FileName);
-                    //var uzanti = "~/wwwroot/img/" + d.Id + dosyaUzanti;
+                   
                     var stream = new FileStream(dosyaYolu, FileMode.Create);
                     d.UploadImage.CopyTo(stream);
                     d.ImageURL = Path.Combine("/img/", d.UploadImage.FileName);
@@ -128,7 +124,7 @@ namespace SeyirAkademi_v1._1.Controllers
                     var dosyaUzanti = Path.GetExtension(d.UploadFile.FileName);
                     var dosyaAdi = Path.GetFileName(d.UploadFile.FileName);
                     var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/file/", d.UploadFile.FileName);
-                    //var uzanti = "~/wwwroot/img/" + d.Id + dosyaUzanti;
+                    
                     var stream = new FileStream(dosyaYolu, FileMode.Create);
                     d.UploadFile.CopyTo(stream);
                     d.FileURL = Path.Combine("/file/", d.UploadFile.FileName); ;
@@ -148,10 +144,21 @@ namespace SeyirAkademi_v1._1.Controllers
             }
         }
 
-        public IActionResult DocDetail(int id)
+        public async Task<IActionResult> DocDetail(int id)
         {
-
-            return View(dContext.Docs.FirstOrDefault(x => x.Id == id));
+            List<Doc> y = new List<Doc>();
+            Doc d = new Doc(); 
+            var hhtc = new HttpClient();
+            var response = await hhtc.GetAsync("https://localhost:44327/api/DocsApi");
+            string resString = await response.Content.ReadAsStringAsync();
+            y = JsonConvert.DeserializeObject<List<Doc>>(resString);
+            d = y.FirstOrDefault(x => x.Id == id);
+            if (d is null)
+            {
+                TempData["hata"] = "Herhangi bir doküman bulunamadı";
+                return View("Hata");
+            }
+            return View(d);
         }
         public IActionResult List()
         {
